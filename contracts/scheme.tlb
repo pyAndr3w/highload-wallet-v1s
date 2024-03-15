@@ -1,0 +1,11 @@
+
+storage$_ public_key:bits256 subwallet_id:uint32 seq_no:uint32 = Storage;
+
+// crc32('internal_transfer n:# query_id:uint64 actions:^OutList n = InternalMsgBody n') = ae42e5a4
+
+
+internal_transfer#ae42e5a4 {n:#} query_id:uint64 actions:^(OutList n) = InternalMsgBody n;
+
+_ {n:#} message:^Cell mode:uint8 subwallet_id:uint32 seq_no:uint32 valid_until:uint64 = MsgInner;
+
+msg_body$_ {n:#} sign:bits512 ^(MsgInner) = ExternalInMsgBody;
